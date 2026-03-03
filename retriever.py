@@ -18,7 +18,6 @@ def setup_qa_chain(persist_directory="./chroma_db"):
         "You are an assistant for question-answering tasks. "
         "Use the following pieces of retrieved context to answer the question. "
         "If you don't know the answer, say that you don't know. "
-        "Always cite the source document and page number from the context.\n\n"
         "{context}"
     )
     prompt = ChatPromptTemplate.from_messages([
@@ -43,10 +42,4 @@ def get_answer(rag_chain, query):
     response = rag_chain.invoke(query)
     answer = response["answer"]
     
-    sources = []
-    for doc in response["context"]:
-        source_info = f"{doc.metadata.get('source', 'Unknown')} (Page {doc.metadata.get('page', 'Unknown')})"
-        if source_info not in sources:
-            sources.append(source_info)
-    
-    return f"{answer}\n\nSources: {', '.join(sources)}"
+    return answer
