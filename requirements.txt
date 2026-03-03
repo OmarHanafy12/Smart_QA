@@ -5,4 +5,3 @@ chromadb
 pypdf
 gradio
 python-dotenv
-langchain-classic
