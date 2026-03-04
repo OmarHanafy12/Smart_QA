@@ -1,1 +1,4 @@
 .env
+chorma_db/
+__pycache__/
+.git/
