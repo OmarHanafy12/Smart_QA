@@ -1,0 +1,13 @@
+services:
+  smart-qa:
+    build: .
+    ports:
+      - "7860:7860"
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - GRADIO_SERVER_NAME=0.0.0.0
+    volumes:
+      - ./test_data:/app/test_data
+    command: python app.py
