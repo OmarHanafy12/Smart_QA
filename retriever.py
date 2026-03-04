@@ -12,7 +12,7 @@ def setup_qa_chain(persist_directory="./chroma_db"):
     vector_store = Chroma(persist_directory=persist_directory, embedding_function=embeddings)
     retriever = vector_store.as_retriever(search_kwargs={"k": 5})
     
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=1)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
     
     system_prompt = (
         "You are an assistant for question-answering tasks. "

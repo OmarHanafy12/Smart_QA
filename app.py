@@ -27,7 +27,7 @@ with gr.Blocks(title="Smart Assistant") as demo:
     gr.Markdown("## Smart QA Assistant")
     
     with gr.Tab("Upload Document"):
-        file_input = gr.File(label="Upload PDF", file_types=[".pdf"], type="filepath")
+        file_input = gr.File(label="Upload PDF", file_types=[".pdf",".docx"], type="filepath")
         upload_button = gr.Button("Process Document")
         upload_status = gr.Textbox(label="Status", interactive=False)
         
