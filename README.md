@@ -1,63 +1,114 @@
-# 🚀 Smart_QA
+# Smart_QA — Retrieval-Augmented Question Answering System
 
-A RAG-based Question Answering system built with LangChain.  
-Provide a document, process it, and ask questions about its content.
-
----
-
-## 📌 Requirements
-
-- Python 3.10+
-- pip
+A modular **Retrieval-Augmented Generation (RAG)** application built using **LangChain**.  
+The system allows users to process a document and ask grounded questions about its content through an interactive web interface.
 
 ---
 
-## ⚙️ Setup & Run
+## 📌 Project Overview
 
-### 1️⃣ Clone the repository
+This project demonstrates an end-to-end RAG pipeline:
+
+- Document ingestion (PDF)
+- Text extraction and chunking
+- Embedding generation
+- Vector database indexing
+- Semantic retrieval
+- LLM-based grounded answer generation
+- Interactive Gradio interface
+- Dockerized deployment
+
+
+---
+
+## 🏗️ Project Structure
+
+```
+Smart_QA/
+│
+├── app.py                # Main application entrypoint
+├── doc_splitter.py       # Document chunking logic
+├── retriever.py          # Retrieval & QA logic
+├── requirements.txt      # Dependencies
+├── Dockerfile            # Docker configuration
+├── chroma_db/            # Auto-generated vector database
+├── test_data/            # Sample PDF for testing
+└── README.md
+```
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the project root:
+
+```
+OPENAI_API_KEY=your_openai_api_key
+```
+
+> Do not commit `.env` to version control.
+
+---
+
+# 🐍 Running Locally (Without Docker)
+
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/OmarHanafy12/Smart_QA.git
 cd Smart_QA
 ```
 
-### 2️⃣ Install dependencies
+### 2️⃣ Create Virtual Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate        # macOS/Linux
+venv\Scripts\activate           # Windows
+```
+
+### 3️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Create `.env` file
-
-Create a `.env` file in the project root and add your API key:
-
-```env
-OPENAI_API_KEY=your_api_key_here
-```
-
-> ⚠️ Do NOT push your `.env` file to GitHub.
-
-### 4️⃣ Run the project
+### 4️⃣ Run the Application
 
 ```bash
 python app.py
 ```
 
----
+The Gradio interface will start at:
 
-## 📂 Project Structure
-
-- `app.py` → Main application entry point  
-- `retriever.py` → Document retrieval logic  
-- `doc_splitter.py` → Document chunking logic  
-- `requirements.txt` → Project dependencies  
+```
+http://127.0.0.1:7860
+```
 
 ---
 
-## 🧠 How It Works
+# 🐳 Running with Docker
 
-1. Load document  
-2. Split into chunks  
-3. Generate embeddings  
-4. Retrieve relevant chunks  
-5. Generate answer using the LLM  
+Docker allows you to run the project without manually installing dependencies.
+
+---
+
+## 🔨 Build the Docker Image
+
+```bash
+docker build -t smart_qa .
+```
+
+---
+
+## ▶️ Run the Container
+
+```bash
+docker run -p 7860:7860 --env-file .env smart_qa
+```
+
+Then open:
+
+```
+http://localhost:7860
+```
