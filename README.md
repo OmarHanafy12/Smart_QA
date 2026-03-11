@@ -43,7 +43,7 @@ Smart_QA/
 Create a `.env` file in the project root:
 
 ```
-OPENAI_API_KEY=your_openai_api_key
+GOOGLE_API_KEY=your_openai_api_key
 ```
 
 > Do not commit `.env` to version control.
